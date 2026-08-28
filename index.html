@@ -3,140 +3,78 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>3FS Creative Studio | Create • Connect • Grow</title>
+<title>3FS Creative Studio — Dashboard</title>
 <style>
-:root{--bg:#07111f;--panel:#0d1a2b;--panel2:#12243a;--gold:#f5b923;--text:#f8fafc;--muted:#aab7c8;--line:#263c56;--accent:#7c3aed}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(135deg,#050b14,#0b1728 55%,#111827);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
-a{text-decoration:none;color:inherit}.container{width:min(1150px,92%);margin:auto}
-nav{position:sticky;top:0;z-index:50;background:rgba(5,11,20,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
-.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:22px}.logo{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#ffd84d,#f08b00);display:grid;place-items:center;color:#101010;font-weight:1000;font-size:18px;box-shadow:0 8px 25px #0005}.tag{display:block;font-size:10px;color:var(--gold);letter-spacing:2px}
-.links{display:flex;gap:22px;font-weight:700;color:#dce5ef}.links a:hover{color:var(--gold)}
-.btn{display:inline-block;border:1px solid #41556e;background:#122238;color:#fff;padding:12px 18px;border-radius:10px;font-weight:800;cursor:pointer}.gold{background:linear-gradient(135deg,#ffd84d,#e79a00);color:#111;border:0}
-.hero{padding:100px 0 75px;text-align:center}.eyebrow{color:var(--gold);font-size:13px;font-weight:900;letter-spacing:3px}.hero h1{font-size:clamp(44px,8vw,82px);line-height:1.02;margin:16px 0}.hero h1 span{color:var(--gold)}.hero p{max-width:760px;margin:0 auto;color:var(--muted);font-size:19px}.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
-section{padding:70px 0}.section-title{text-align:center;font-size:40px;margin:0 0 12px}.section-sub{text-align:center;color:var(--muted);max-width:700px;margin:0 auto 35px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:linear-gradient(145deg,#0d1a2b,#101f33);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 15px 40px #0004}.card h3{margin:8px 0;color:#fff}.card p{color:var(--muted);margin:0}.icon{font-size:28px}
-.team{display:flex;align-items:center;gap:14px}.avatar{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#7c3aed,#1687ff);font-weight:900}.team p{margin:0}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.stat{padding:25px;text-align:center;background:var(--panel);border:1px solid var(--line);border-radius:16px}.stat b{font-size:34px;color:var(--gold)}
-.table{overflow:auto;border:1px solid var(--line);border-radius:14px}.row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;min-width:650px;padding:15px 18px;border-bottom:1px solid var(--line)}.row:last-child{border:0}.head{font-weight:900;background:var(--panel2)}.badge{padding:5px 9px;border-radius:20px;background:#173b2e;color:#76e6b2;font-size:12px}
-footer{padding:30px;text-align:center;border-top:1px solid var(--line);color:var(--muted)}
-.modal{display:none;position:fixed;inset:0;background:#000b;z-index:100;place-items:center;padding:20px}.modal.open{display:grid}.box{width:min(430px,100%);background:#0c1828;border:1px solid var(--line);border-radius:20px;padding:28px}.box input,.add-form input,.add-form textarea{width:100%;padding:13px;margin:7px 0 14px;border-radius:9px;border:1px solid #3a506b;background:#07111f;color:#fff}.box label{font-weight:700}.error{color:#ff9c9c;margin-top:12px}
-.add-form{max-width:650px;margin:25px auto}.add-form textarea{min-height:90px;resize:vertical}.hidden{display:none}
-@media(max-width:800px){.links{display:none}.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.hero{padding-top:70px}}
-@media(max-width:480px){.stats{grid-template-columns:1fr}.hero h1{font-size:44px}.section-title{font-size:32px}}
+:root{--bg:#050b15;--panel:#0b1628;--panel2:#0e1c31;--line:#24334b;--gold:#f5b51b;--gold2:#ffc83d;--text:#f5f7fb;--muted:#9ba9bf;--purple:#7c3aed;--green:#10b981;--blue:#1687ff;--red:#ef233c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% 0,#12223c 0,#050b15 42%,#03070e 100%);color:var(--text);font:14px/1.45 Inter,Segoe UI,Arial,sans-serif}
+button{font:inherit}.top{height:78px;border-bottom:1px solid #3b3b2b;display:flex;align-items:center;padding:0 18px;gap:28px;background:#060c16;position:sticky;top:0;z-index:10}.brand{display:flex;align-items:center;gap:12px;min-width:300px}.brand img{width:58px;height:58px;object-fit:contain;border-radius:50%;background:#fff}.brand strong{font-size:34px;letter-spacing:1px}.brand small{display:block;color:var(--gold2);font-size:16px;font-weight:700;margin-top:-5px}.motto{flex:1;text-align:center;color:#ffd03a;font-weight:700;font-style:italic;font-size:17px}.toplinks{display:flex;gap:26px;font-size:18px;font-weight:600}.toplinks span:nth-child(even){color:var(--gold)}
+.layout{display:grid;grid-template-columns:235px minmax(600px,1fr) 390px;min-height:calc(100vh - 78px)}aside{border-right:1px solid var(--line);padding:25px 12px;background:rgba(4,11,21,.82)}.nav{display:flex;align-items:center;gap:15px;padding:13px 16px;margin:4px 0;border-radius:12px;color:#c8d3e5;font-size:16px;cursor:pointer}.nav.active{background:linear-gradient(90deg,#ffcf39,#e8a812);color:#111827;font-weight:800}.nav .ico{width:24px;text-align:center;font-size:21px}.main{padding:28px 30px;min-width:0}.title{display:flex;align-items:center;gap:14px}.title .bigico{font-size:38px;color:var(--gold2)}h1{font-size:32px;margin:0}h1+div{color:#aebbd0;font-size:16px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:24px 0 26px}.card{background:linear-gradient(135deg,#0c1730,#0a1425);border:1px solid var(--line);border-radius:15px;padding:18px;min-height:104px}.card .label{color:#c4cde0;font-size:13px}.card .num{font-size:29px;font-weight:800;margin-top:8px}.card.purple{border-color:#5931a8}.card.green{border-color:#087a5a}.card.blue{border-color:#12599c}.card.orange{border-color:#945114}.section{margin-top:22px}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.sectionhead h2{margin:0;font-size:23px}.table{border:1px solid var(--line);border-radius:15px;overflow:hidden;background:rgba(8,19,34,.85)}.thead,.row{display:grid;grid-template-columns:2.05fr .65fr 2.1fr 1fr;align-items:center}.thead{padding:13px 22px;background:#0d1b30;color:#c6d4e8}.row{padding:10px 22px;border-top:1px solid var(--line);min-height:62px}.person{display:flex;align-items:center;gap:13px}.avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:19px;font-weight:800;background:linear-gradient(135deg,#6d28d9,#a855f7)}.row:nth-child(3) .avatar{background:linear-gradient(135deg,#10b981,#22c55e)}.row:nth-child(4) .avatar{background:linear-gradient(135deg,#0891b2,#22d3ee)}.row:nth-child(5) .avatar{background:linear-gradient(135deg,#f59e0b,#f97316)}.row:nth-child(6) .avatar{background:linear-gradient(135deg,#06b6d4,#22d3ee)}.row:nth-child(7) .avatar{background:linear-gradient(135deg,#db2777,#f472b6)}.person b{display:block}.person small{color:#a6b3c8}.count{background:#321c88;border-radius:10px;padding:4px 12px;width:max-content;font-weight:800}.actions{display:flex;gap:7px}.btn{border:0;border-radius:8px;padding:9px 11px;cursor:pointer;color:#fff}.view{background:#193455}.edit{background:#ffbd25;color:#111}.del{background:#dc1028}.add{background:linear-gradient(135deg,#ffcf3d,#edae13);border:0;border-radius:10px;padding:12px 18px;font-weight:800;cursor:pointer;color:#111}.overview{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.mini{background:#0b182b;border:1px solid #273750;border-radius:9px;padding:12px 7px;text-align:center}.mini b{display:block;font-size:14px}.mini strong{display:block;font-size:20px;margin-top:5px}.right{border-left:1px solid var(--line);padding:25px 18px;background:rgba(4,11,21,.65)}.report{border:1px solid #273750;border-radius:15px;background:linear-gradient(145deg,#0d1b2e,#081323);padding:16px;margin-top:15px}.tabs{display:flex;background:#14233a;border-radius:10px;padding:3px;margin:12px 0}.tabs span{flex:1;text-align:center;padding:9px 4px;border-radius:8px;color:#c5d1e3}.tabs .sel{background:#ffc52d;color:#111;font-weight:800}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{border:1px solid #30415b;border-radius:12px;padding:13px}.metric b{font-size:23px;display:block;margin-top:5px}.up{color:#10d38b;font-size:11px}.donut{width:135px;height:135px;border-radius:50%;background:conic-gradient(#8246ee 0 25%,#1593ef 25% 45%,#10b981 45% 65%,#f59e0b 65% 80%,#e22ca8 80% 100%);position:relative;margin:12px auto}.donut:after{content:"";position:absolute;inset:34px;background:#0b1628;border-radius:50%}.legend{font-size:12px;display:grid;gap:5px}.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}.chart{height:180px;display:flex;align-items:end;gap:13px;padding:20px 10px 25px;border-bottom:1px solid #2b3a50;position:relative}.bar{flex:1;display:flex;align-items:end;gap:3px;height:100%}.bar i{display:block;width:50%;border-radius:4px 4px 0 0}.q{height:45%;background:#8b4de8}.p{height:65%;background:#f2b51d}.b2{height:58%}.b3{height:72%}.b4{height:84%}.b5{height:96%}.b6{height:100%}.xlabel{position:absolute;bottom:3px;left:0;right:0;display:flex;justify-content:space-around;color:#8392a9;font-size:11px}.foot{border-top:1px solid #3b3b2b;text-align:center;padding:18px;color:#e5e7eb}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;place-items:center;z-index:30}.modal.show{display:grid}.modalbox{width:min(470px,92vw);background:#0b1729;border:1px solid #3b4a63;border-radius:16px;padding:22px;box-shadow:0 20px 80px #000}.modalbox h3{margin-top:0}.field{display:grid;gap:6px;margin:12px 0}.field input,.field select{background:#07101d;border:1px solid #34455f;color:white;padding:11px;border-radius:9px}.modalactions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}.cancel{background:#26354b;color:#fff;border:0;padding:10px 15px;border-radius:8px}.save{background:#ffc52d;border:0;padding:10px 15px;border-radius:8px;font-weight:800}
+@media(max-width:1100px){.layout{grid-template-columns:190px 1fr}.right{display:none}.cards{grid-template-columns:repeat(2,1fr)}}@media(max-width:760px){.top{height:auto;padding:10px;flex-wrap:wrap}.brand{min-width:auto}.brand strong{font-size:25px}.brand img{width:45px;height:45px}.toplinks,.motto{display:none}.layout{display:block}aside{display:flex;overflow:auto;border-right:0;border-bottom:1px solid var(--line)}.nav{white-space:nowrap}.main{padding:18px 12px}.cards{grid-template-columns:1fr 1fr;gap:9px}.thead{display:none}.row{grid-template-columns:1fr auto;gap:8px;padding:12px}.row>div:nth-child(2),.row>div:nth-child(3){display:none}.overview{grid-template-columns:repeat(2,1fr)}h1{font-size:25px}}
 </style>
 </head>
 <body>
-<nav><div class="container nav">
-<a class="brand" href="#home"><div class="logo">3FS</div><div>3FS Creative Studio<span class="tag">CREATE • CONNECT • GROW</span></div></a>
-<div class="links"><a href="#about">About</a><a href="#services">Services</a><a href="#team">Team</a><a href="#projects">Projects</a><a href="#partners">Partners</a></div>
-<a class="btn gold" href="#contact">Let's Talk</a>
-</div></nav>
-
-<main id="home">
-<section class="hero"><div class="container">
-<div class="eyebrow">3FS CREATIVE STUDIO</div>
-<h1>Ideas that become <span>experiences.</span></h1>
-<p>We blend strategy, design, technology and storytelling to help ambitious brands stand out, connect with people and grow.</p>
-<div class="actions"><a class="btn gold" href="#contact">Partner With 3FS</a><a class="btn" href="#projects">Explore Our Work</a></div>
-</div></section>
-
-<section id="about"><div class="container">
-<h2 class="section-title">Every Frame Feels the Story.</h2><p class="section-sub">We turn business goals into memorable digital identities, modern websites and campaigns designed to move people.</p>
-<div class="grid">
-<div class="card"><div class="icon">✦</div><h3>Creative Thinking</h3><p>Fresh concepts with a clear purpose — built to make your brand impossible to ignore.</p></div>
-<div class="card"><div class="icon">◇</div><h3>Connected Teams</h3><p>Designers, developers, strategists and creators working together from idea to launch.</p></div>
-<div class="card"><div class="icon">↗</div><h3>Growth Focus</h3><p>Creative work backed by business thinking, measurable goals and continuous improvement.</p></div>
-</div></div></section>
-
-<section id="services"><div class="container">
-<h2 class="section-title">What We Create</h2><p class="section-sub">Creative services for brands ready to build, connect and grow.</p>
-<div class="grid">
-<div class="card"><div class="icon">◈</div><h3>Web Development & Design</h3><p>Modern, responsive websites and digital experiences.</p></div>
-<div class="card"><div class="icon">✎</div><h3>Logo & Brand Identity</h3><p>Distinctive visual systems that make brands memorable.</p></div>
-<div class="card"><div class="icon">◎</div><h3>Social Media Handling</h3><p>Content, campaigns and creative direction for social growth.</p></div>
-<div class="card"><div class="icon">⌁</div><h3>Business Strategy</h3><p>Clear positioning and practical strategies for growth.</p></div>
-<div class="card"><div class="icon">▥</div><h3>Analytics & Performance</h3><p>Insights and reporting that turn activity into decisions.</p></div>
-<div class="card"><div class="icon">✦</div><h3>Creative Support</h3><p>Flexible creative support whenever your team needs an extra force.</p></div>
-</div></div></section>
-
-<section id="team"><div class="container">
-<h2 class="section-title">Meet the 3FS Team</h2><p class="section-sub">The people behind the ideas, design, technology and growth.</p>
-<div class="grid">
-<div class="card"><div class="team"><div class="avatar">A</div><div><h3>Team-1: Amulya</h3><p>Branding & Design</p></div></div></div>
-<div class="card"><div class="team"><div class="avatar">K</div><div><h3>Team-2: Koushik</h3><p>Social Media</p></div></div></div>
-<div class="card"><div class="team"><div class="avatar">T</div><div><h3>Team-3: Tejas</h3><p>Business Strategy</p></div></div></div>
-<div class="card"><div class="team"><div class="avatar">A</div><div><h3>Team-4: Aditya</h3><p>Analytics & Performance</p></div></div></div>
-<div class="card"><div class="team"><div class="avatar">R</div><div><h3>Team-5: Ranjitha</h3><p>Creative Support</p></div></div></div>
-<div class="card"><div class="team"><div class="avatar">G</div><div><h3>Team-7: Gagan</h3><p>Creative Director & Founder</p></div></div></div>
-</div>
-<div id="customTeams" class="grid" style="margin-top:18px"></div>
-</div></section>
-
-<section id="projects"><div class="container">
-<h2 class="section-title">Selected Projects</h2><p class="section-sub">A snapshot of the work we are building.</p>
-<div class="table">
-<div class="row head"><div>Project</div><div>Client</div><div>Status</div><div>Progress</div></div>
-<div class="row"><div>3FS Corporate Website</div><div>3FS</div><div><span class="badge">In Progress</span></div><div>70%</div></div>
-<div class="row"><div>E-Commerce Platform</div><div>Trendifly</div><div><span class="badge">In Progress</span></div><div>45%</div></div>
-<div class="row"><div>Portfolio Website</div><div>Arjun Dev</div><div><span class="badge">Completed</span></div><div>100%</div></div>
-</div></div></section>
-
-<section id="partners"><div class="container">
-<h2 class="section-title">Our Partner Portal</h2><p class="section-sub">Private team tools are available through the portal. The public website remains accessible to everyone.</p>
-<div class="stats"><div class="stat"><b>7</b><br>Core Team</div><div class="stat"><b>6</b><br>Services</div><div class="stat"><b>3</b><br>Projects</div><div class="stat"><b>24/7</b><br>Creative Energy</div></div>
-<div class="actions"><button class="btn gold" onclick="openPortal()">Open 3FS Portal</button></div>
-</div></section>
-
-<section id="contact"><div class="container" style="text-align:center">
-<h2 class="section-title">Ready to create your next growth story?</h2><p class="section-sub">Bring us your idea, challenge or ambition. We'll bring the creative force.</p>
-<div class="actions"><a class="btn gold" href="mailto:hello@3fscreativestudio.com">Start a Conversation</a><button class="btn" onclick="openPortal()">Open 3FS Portal</button></div>
-</div></section>
+<header class="top">
+  <div class="brand"><img src="3fs-logo.jpg" alt="3FS Creative Studio"><div><strong>3FS</strong><small>Creative Studio</small></div></div>
+  <div class="toplinks"><span>Create</span><b>•</b><span>Connect</span><b>•</b><span>Grow</span></div>
+  <div class="motto">Every Frame Feels the Story</div>
+  <div>🔔　👤 <b>Admin</b>⌄</div>
+</header>
+<div class="layout">
+<aside>
+  <div class="nav">⌂ <span>Dashboard</span></div><div class="nav">♙ <span>Clients</span></div><div class="nav">▣ <span>Projects</span></div>
+  <div class="nav active">♧ <span>Teams</span></div>
+  <div class="nav">◈ <span>Services</span></div><div class="nav">▤ <span>Enquiries</span></div><div class="nav active">▥ <span>Reports</span></div>
+</aside>
+<main class="main">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:15px">
+    <div class="title"><div class="bigico">♧</div><div><h1>3FS Teams</h1><div>Our Creative Force Driving Digital Growth</div></div></div>
+    <button class="add" onclick="openModal()">＋ Add Team Member</button>
+  </div>
+  <div class="cards">
+    <div class="card purple"><div class="label">Total Team Members</div><div class="num" id="total">14</div></div>
+    <div class="card green"><div class="label">Active Teams</div><div class="num" id="active">7</div></div>
+    <div class="card blue"><div class="label">Ongoing Projects</div><div class="num">12</div></div>
+    <div class="card orange"><div class="label">Total Clients</div><div class="num">8</div></div>
+  </div>
+  <section class="section">
+    <div class="sectionhead"><h2>♧　Team Members</h2></div>
+    <div class="table"><div class="thead"><div>Team Name</div><div>Members</div><div>Description</div><div>Actions</div></div><div id="rows"></div></div>
+  </section>
+  <section class="section"><div class="sectionhead"><h2>♧　Team Overview</h2><u>View All</u></div><div class="overview" id="overview"></div></section>
+  <div class="foot">© 2026 3FS Creative Studio　|　Create • Connect • Grow</div>
 </main>
-
-<footer>© 2026 3FS Creative Studio &nbsp; | &nbsp; Create • Connect • Grow &nbsp; | &nbsp; Every Frame Feels the Story</footer>
-
-<div id="modal" class="modal"><div class="box">
-<div class="eyebrow">3FS PARTNER PORTAL</div><h2>Welcome back.</h2><p style="color:var(--muted)">Sign in to manage the creative team.</p>
-<label>Admin name</label><input id="user" autocomplete="username" placeholder="Admin name">
-<label>Password</label><input id="pass" type="password" autocomplete="current-password" placeholder="Password">
-<button class="btn gold" style="width:100%;margin-top:10px" onclick="login()">Sign In</button>
-<div id="error" class="error"></div><button class="btn" style="width:100%;margin-top:10px" onclick="closePortal()">Back</button>
-</div></div>
-
+<aside class="right">
+  <h2 style="margin:0;font-size:24px">▥ Reports</h2><div style="color:#aebbd0">Insights & performance</div>
+  <div class="report"><div class="tabs"><span class="sel">Overview</span><span>Clients</span><span>Projects</span><span>Teams</span></div>
+  <div class="metrics"><div class="metric">👥 Total Clients<b>8</b><span class="up">↑ 12%</span></div><div class="metric">▰ Total Projects<b>12</b><span class="up">↑ 20%</span></div><div class="metric">♧ Team Members<b id="rmembers">14</b><span class="up">↑ 6%</span></div><div class="metric">◎ New Enquiries<b>6</b><span class="up">↑ 33%</span></div></div></div>
+  <div class="report"><h3 style="margin:0">Projects by Service</h3><div style="display:flex;align-items:center;gap:15px"><div class="donut"></div><div class="legend"><div>🟣 Web Development — 25%</div><div>🔵 Branding & Design — 20%</div><div>🟢 Social Media — 20%</div><div>🟠 Business Strategy — 15%</div><div>🩷 Analytics — 20%</div></div></div></div>
+  <div class="report"><h3 style="margin:0">Enquiries & Projects Trend</h3><div class="chart"><div class="bar"><i class="q"></i><i class="p"></i></div><div class="bar"><i class="q b2"></i><i class="p b3"></i></div><div class="bar"><i class="q b3"></i><i class="p b4"></i></div><div class="bar"><i class="q b4"></i><i class="p b5"></i></div><div class="bar"><i class="q b5"></i><i class="p b6"></i></div><div class="bar"><i class="q b6"></i><i class="p b6"></i></div><div class="xlabel"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span></div></div></div>
+</aside>
+</div>
+<div class="modal" id="modal"><div class="modalbox"><h3 id="modalTitle">Add Team Member</h3>
+<div class="field"><label>Name</label><input id="name" placeholder="e.g. Gagan"></div>
+<div class="field"><label>Role</label><input id="role" placeholder="e.g. Strategy & Coordination"></div>
+<div class="field"><label>Description</label><input id="desc" placeholder="Short team description"></div>
+<div class="field"><label>Members</label><input id="members" type="number" min="1" value="1"></div>
+<div class="modalactions"><button class="cancel" onclick="closeModal()">Cancel</button><button class="save" onclick="saveMember()">Save Member</button></div></div></div>
 <script>
-function openPortal(){document.getElementById('modal').classList.add('open')}
-function closePortal(){document.getElementById('modal').classList.remove('open')}
-function login(){
- const u=document.getElementById('user').value.trim(),p=document.getElementById('pass').value;
- if(u==='3FS'&&p==='3FS@media'){closePortal();alert('Welcome to the 3FS Partner Portal!')}
- else document.getElementById('error').textContent='Incorrect admin name or password.'
-}
-const key='3fs_custom_team_members';
-function getMembers(){try{return JSON.parse(localStorage.getItem(key)||'[]')}catch(e){return[]}}
-function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-function initials(s){return s.trim().split(/\s+/).map(x=>x[0]).join('').slice(0,2).toUpperCase()}
-function renderMembers(){
- const b=document.getElementById('customTeams'); const a=getMembers();
- b.innerHTML=a.length?a.map(x=>`<div class="card"><div class="team"><div class="avatar">${initials(x.name)}</div><div><h3>${esc(x.name)}</h3><p>${esc(x.role)}</p></div></div><p style="margin-top:12px"><strong>${esc(x.service)}</strong><br>${esc(x.desc)}</p><div class="actions" style="justify-content:flex-start"><button class="btn" onclick="editMember(${x.id})">Edit</button><button class="btn" onclick="deleteMember(${x.id})">Delete</button></div></div>`).join(''):'';
-}
-function addMember(){
- const name=prompt('Team member name:'); if(!name)return;
- const role=prompt('Role:'); if(!role)return;
- const service=prompt('Service / Team:'); if(!service)return;
- const desc=prompt('Short description:')||'Creative team member';
- const a=getMembers();a.push({id:Date.now(),name,role,service,desc});localStorage.setItem(key,JSON.stringify(a));renderMembers();
-}
-function editMember(id){
- const a=getMembers(),x=a.find(v=>v.id===id);if(!x)return;
- const name=prompt('Member name:',x.name);if(name===null)return;
- const role=prompt('Role:',x.role);if(role===null)return;
- const service=prompt('Service / Team:',x.service);if(service===null)return;
- const desc=prompt('Description:',x.desc);if(desc===null)return;
- Object.assign(x,{name:name.trim()||x.name,role:role.trim()||x.role,service:service.trim()||x.service,desc:desc.trim()||x.desc});
- localStorage.setItem(key,JSON.stringify(a));renderMembers();
-}
-function deleteMember(id){localStorage.setItem(key,JSON.stringify(getMembers().filter(x=>x.id!==id)));renderMembers()}
-renderMembers();
+let data=[
+["DHANUSH","Creative Web Development","Web Development & Design","Modern websites & digital solutions",2],
+["AMULYA","Branding & Design","Logo & Brand Identity Design","Turning ideas into visual identity",2],
+["KOUSHIK","Social Media","Social Media Handling","Engaging brands online",2],
+["TEJAS","Business Strategy","Business Strategy","Growth plans for modern businesses",2],
+["ADITYA","Analytics & Performance","Analytics & Performance","Data-driven growth insights",2],
+["RANJITHA","Creative Support","Creative Support","Design & content assistance",1],
+["GAGAN","Strategy & Coordination","Strategy & Coordination","Team support & project flow",1]
+];
+let editIndex=-1;
+function render(){const rows=document.getElementById("rows"),ov=document.getElementById("overview");rows.innerHTML="";ov.innerHTML="";
+data.forEach((x,i)=>{rows.insertAdjacentHTML("beforeend",`<div class="row"><div class="person"><div class="avatar">${x[0][0]}</div><div><b>Team-${i+1}: ${x[0]}</b><small>${x[1]}</small></div></div><div><span class="count">${x[4]}</span></div><div><b style="font-weight:500">${x[2]}</b><small style="display:block;color:#9ba9bf">${x[3]}</small></div><div class="actions"><button class="btn view" onclick="alert('Team-${i+1}: ${x[0]}\\n${x[2]}')">◉</button><button class="btn edit" onclick="openModal(${i})">✎</button><button class="btn del" onclick="removeMember(${i})">♜</button></div></div>`);ov.insertAdjacentHTML("beforeend",`<div class="mini"><b>${x[0][0]+x[0].slice(1).toLowerCase()}</b><strong>${x[4]}</strong><small>Members</small></div>`);});
+document.getElementById("total").textContent=data.reduce((a,x)=>a+x[4],0);document.getElementById("active").textContent=data.length;document.getElementById("rmembers").textContent=data.reduce((a,x)=>a+x[4],0);}
+function openModal(i=-1){editIndex=i;document.getElementById("modalTitle").textContent=i<0?"Add Team Member":"Edit Team Member";let x=i<0?["","","","",1]:data[i];document.getElementById("name").value=x[0];document.getElementById("role").value=x[1];document.getElementById("desc").value=x[3];document.getElementById("members").value=x[4];document.getElementById("modal").classList.add("show")}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+function saveMember(){let n=document.getElementById("name").value.trim(),r=document.getElementById("role").value.trim(),d=document.getElementById("desc").value.trim(),m=Math.max(1,+document.getElementById("members").value||1);if(!n)return alert("Please enter a name.");let item=[n.toUpperCase(),r,r,d,m];if(editIndex<0)data.push(item);else data[editIndex]=item;closeModal();render()}
+function removeMember(i){if(confirm("Delete Team-"+(i+1)+" "+data[i][0]+"?")){data.splice(i,1);render()}}
+render();
 </script>
-</body>
-</html>
+</body></html>
