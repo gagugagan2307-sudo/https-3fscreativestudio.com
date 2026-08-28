@@ -13,6 +13,7 @@ button{font:inherit}.top{height:78px;border-bottom:1px solid #3b3b2b;display:fle
 </style>
 </head>
 <body>
+<div id="portalButton" style="position:fixed;right:22px;top:92px;z-index:20"><button onclick="openPortal()" style="background:linear-gradient(135deg,#ffd13b,#e9a90e);border:0;border-radius:10px;padding:12px 20px;font-weight:800;color:#111;cursor:pointer;box-shadow:0 8px 25px #0008">Open 3FS Portal</button></div>
 <header class="top">
   <div class="brand"><img src="3fs-logo.jpg" alt="3FS Creative Studio"><div><strong>3FS</strong><small>Creative Studio</small></div></div>
   <div class="toplinks"><span>Create</span><b>•</b><span>Connect</span><b>•</b><span>Grow</span></div>
@@ -77,4 +78,5 @@ function saveMember(){let n=document.getElementById("name").value.trim(),r=docum
 function removeMember(i){if(confirm("Delete Team-"+(i+1)+" "+data[i][0]+"?")){data.splice(i,1);render()}}
 render();
 </script>
+<script>function openPortal(){window.location.href='portal.html';}</script>
 </body></html>
