@@ -1,18 +1,18 @@
-# 3FS Creative Studio Dashboard
+# 3FS Creative Studio — Final Editable Dashboard
 
-Static GitHub Pages compatible dashboard.
+Upload `index.html`, `portal.html` and `3fs-logo.jpg` to the root of the existing GitHub Pages repository.
 
-## Login
-Username: `3FS`
-Password: `3FS@media`
+Features:
+- Working dashboard and portal
+- Custom add/edit/delete for clients, projects, teams, services, enquiries and partners
+- Team 1–7 plus sub-member management
+- Project completed/not completed status
+- Income, revenue, investment and profit/loss fields
+- Partner share and investment fields
+- Project history
+- Notifications/data sections
+- Working theme selector with persistent themes
+- Your 3FS logo
+- Browser localStorage data persistence
 
-## Features
-- Working 3FS Portal and login
-- Dashboard / Clients / Projects / Teams / Services / Enquiries / Reports
-- Add, View, Edit and Delete records
-- Fully custom editable fields
-- Team-1 through Team-7 with independent inner sub-member add/edit/delete
-- Data saved in browser localStorage
-- Uses the supplied 3FS logo (`3fs-logo.jpg`)
-
-Upload `index.html`, `portal.html`, `3fs-logo.jpg`, and this README to the same GitHub Pages root. Existing unrelated files can remain in the repository.
+GitHub Pages is static, so data is saved in the browser, not a shared server database.
