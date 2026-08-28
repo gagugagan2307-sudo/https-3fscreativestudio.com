@@ -1,15 +1,20 @@
-# 3FS Creative Studio — Official Website
+# 3FS Creative Studio — GitHub Pages FIXED
 
-Premium dark/gold creative-studio website with a secure Flask login and Team-1 dashboard.
+This is a single-file static website designed for GitHub Pages.
 
-## Run
-1. Install Python 3.10+.
-2. `pip install -r requirements.txt`
-3. `python app.py`
-4. Open `http://127.0.0.1:5000`
+## Upload
+Upload `index.html` to the ROOT of the repository.
 
-## Portal credentials
-Username: `3FS`
-Password: `3FS@media`
+GitHub Pages:
+Settings → Pages → Deploy from a branch → `main` → `/ (root)` → Save.
 
-For production, move credentials to environment variables and use HTTPS.
+Wait for the Pages deployment to finish, then open the URL shown by GitHub Pages.
+
+## Important
+Do NOT use `app.py` or `requirements.txt` for this GitHub Pages version. GitHub Pages hosts static HTML/CSS/JS.
+
+## Portal demo
+Admin name: 3FS
+Password: 3FS@media
+
+The custom team-member feature saves entries in the browser's localStorage.
