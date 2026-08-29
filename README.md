@@ -15,4 +15,12 @@ Features:
 - Your 3FS logo
 - Browser localStorage data persistence
 
-GitHub Pages is static, so data is saved in the browser, not a shared server database.
+The site can run on GitHub Pages or any static host. With Supabase configured, shared data is stored in the live database and synchronized in real time; localStorage is used as a fallback/cache.
+
+
+## Multi-user authentication and access
+This version uses Supabase Auth with email/password accounts. Every active 3FS team member is automatically an **Admin Team Member** with full access to the dashboard, data, user management, and real-time features. There are no Owner, CEO, Manager, Viewer, or restricted-member levels.
+
+New accounts are created as `admin` automatically by the database trigger. You do not need to promote users manually. Database RLS enforces the same full-access team policy server-side.
+
+Do not place a Supabase service-role/secret key in the website.
