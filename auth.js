@@ -1,46 +1,22 @@
-// 3FS Multi-user authentication + role/permission guard (Supabase Auth)
+// 3FS No-Login Mode
+// Authentication has been disabled. Existing permission checks remain compatible
+// and all dashboard actions are available without signing in.
 (function(){
-  const cfg=window.SUPABASE_CONFIG||{};
-  let client=null, profile=null;
-  const ROLE_LABELS={admin:'Team Member • Admin'};
-  function configured(){return !!(cfg.url&&cfg.publishableKey&&!cfg.url.includes('YOUR_')&&!cfg.publishableKey.includes('YOUR_')&&window.supabase)}
-  function emit(){window.dispatchEvent(new CustomEvent('3fs:authchange',{detail:{user:client?.auth?.user?.(),profile}}))}
-  async function init(){
-    if(!configured()){window._3fsAuthReady=Promise.resolve(false);return false}
-    client=window.supabase.createClient(cfg.url,cfg.publishableKey);
-    const {data,error}=await client.auth.getSession();
-    if(error||!data.session){window._3fsAuthReady=Promise.resolve(false);return false}
-    const ok=await loadProfile(data.session.user.id);
-    client.auth.onAuthStateChange(async (_event,session)=>{
-      if(session) await loadProfile(session.user.id); else {profile=null;emit();}
-    });
-    window._3fsAuthReady=Promise.resolve(ok); return ok;
-  }
-  async function loadProfile(uid){
-    const {data,error}=await client.from('profiles').select('id,email,full_name,role,is_active,created_at').eq('id',uid).maybeSingle();
-    if(error||!data||!data.is_active){profile=null;return false}
-    profile=data; emit(); return true;
-  }
+  const profile={id:null,email:'',full_name:'3FS Team',role:'admin',is_active:true};
+  const ready=Promise.resolve(true);
   window.threefsAuth={
-    client:()=>client,
+    client:()=>window._3fsSupabaseClient||null,
     profile:()=>profile,
-    role:()=>profile?.role||null,
-    roleLabel:()=>ROLE_LABELS[profile?.role]||'Unknown',
-    is:(r)=>profile?.role===r,
-    can:(action,section)=>{
-      const r=profile?.role;
-      if(!r)return false;
-      if(action==='view')return r==='admin';
-      if(action==='manage_users')return r==='admin';
-      if(action==='write')return r==='admin';
-      return false;
-    },
-    signIn:async(email,password)=>client.auth.signInWithPassword({email,password}),
-    signUp:async(email,password,fullName)=>client.auth.signUp({email,password,options:{data:{full_name:fullName}}}),
-    signOut:async()=>client.auth.signOut(),
-    resetPassword:async(email)=>client.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname}),
-    ready:()=>window._3fsAuthReady||Promise.resolve(false)
+    role:()=>'admin',
+    roleLabel:()=>'Team Member • Admin',
+    is:(r)=>r==='admin',
+    can:()=>true,
+    signIn:async()=>({data:{session:null},error:null}),
+    signUp:async()=>({data:{session:null},error:null}),
+    signOut:async()=>({error:null}),
+    resetPassword:async()=>({error:null}),
+    ready:()=>ready
   };
-  window.addEventListener('3fs:logout',()=>window.threefsAuth?.signOut());
-  init();
+  window._3fsAuthReady=ready;
+  window.dispatchEvent(new CustomEvent('3fs:authchange',{detail:{user:null,profile}}));
 })();

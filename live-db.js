@@ -11,18 +11,11 @@
   function status(state,text){
     window.dispatchEvent(new CustomEvent('3fs:syncstatus',{detail:{state,text}}));
   }
-  async function ensureAuth(){
-    const {data:{session}}=await client.auth.getSession();
-    return !!session;
-  }
   window.init3FSLiveSync=async function(onChange){
     if(!configured()){ status('offline','Local mode — connect Supabase to enable live sync'); return; }
     try{
       status('connecting','Connecting to live database…');
       client=window.supabase.createClient(cfg.url,cfg.publishableKey);
-      const authenticated=await ensureAuth();
-      if(!authenticated){ status('error','Database authentication failed'); return; }
-
       const result=await client.from('threefs_state').select('data,updated_at').eq('id',1).maybeSingle();
       if(result.error) throw result.error;
 
@@ -32,7 +25,7 @@
         onChange&&onChange();
       } else if(window.store){
         // First connected device seeds the shared row with its current local data.
-        if(window.threefsAuth?.can('write')) await client.from('threefs_state').upsert({id:1,data:window.store,updated_at:new Date().toISOString(),updated_by:window.threefsAuth.profile()?.id});
+        if(window.threefsAuth?.can('write')) await client.from('threefs_state').upsert({id:1,data:window.store,updated_at:new Date().toISOString(),updated_by:null});
         status('online','Live database connected · initial data synced');
       }
 

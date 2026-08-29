@@ -24,3 +24,7 @@ This version uses Supabase Auth with email/password accounts. Every active 3FS t
 New accounts are created as `admin` automatically by the database trigger. You do not need to promote users manually. Database RLS enforces the same full-access team policy server-side.
 
 Do not place a Supabase service-role/secret key in the website.
+
+
+## No-Login Mode
+Login authentication has been removed. The dashboard opens directly and existing admin permission checks remain enabled for all users. Supabase live sync uses the publishable key without requiring a signed-in session; configure Supabase RLS policies to allow the required anonymous access if live sync is desired.
