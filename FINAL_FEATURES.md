@@ -19,7 +19,3 @@ Retained features:
 - Mobile and laptop responsive layout
 
 Nothing was intentionally removed from the supplied version.
-
-
-## User Management
-Functional add/edit/activate/deactivate/delete user management section with local browser persistence.
