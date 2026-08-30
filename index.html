@@ -129,69 +129,6 @@ function financeTotals(){const ts=store.transactions||[],bank=(store.bankAccount
 function accountsPage(){let f=financeTotals();document.getElementById('content').innerHTML=`<div class="title"><div class="bigico">💰</div><div><h1>3FS Accounts</h1><div>Neatly maintain revenue, expenses, investments, withdrawals and profit</div></div></div>${reportTools('3FS Accounts Report')}<div class="accountsgrid"><div class="acctcard">Total Revenue<b>${money(f.income)}</b></div><div class="acctcard">Expenses<b>${money(f.expense)}</b></div><div class="acctcard">Investments<b>${money(f.invest)}</b></div><div class="acctcard">Withdrawals<b>${money(f.withdraw)}</b></div><div class="acctcard">Available Balance<b>${money(f.total)}</b></div><div class="acctcard">Net Profit<b>${money(f.profit)}</b></div></div>${calcHTML()}<section class="section"><div class="sectionhead"><h2>➕ Record Money</h2></div><div class="grid2"><div class="report"><h3>Revenue / Income</h3><div class="field"><label>Amount</label><input id="finIncome" type="number"></div><div class="field"><label>Client / Project</label><input id="finIncomeNote"></div><button class="add" onclick="addFinance('income','finIncome','finIncomeNote')">Add Income</button></div><div class="report"><h3>Expense</h3><div class="field"><label>Amount</label><input id="finExpense" type="number"></div><div class="field"><label>Category / Project</label><input id="finExpenseNote"></div><button class="add" onclick="addFinance('expense','finExpense','finExpenseNote')">Add Expense</button></div><div class="report"><h3>Investment</h3><div class="field"><label>Amount</label><input id="finInvest" type="number"></div><div class="field"><label>Investment Name</label><input id="finInvestNote"></div><button class="add" onclick="addFinance('investment','finInvest','finInvestNote')">Add Investment</button></div><div class="report"><h3>Withdrawal</h3><div class="field"><label>Amount</label><input id="finWithdraw" type="number"></div><div class="field"><label>Purpose</label><input id="finWithdrawNote"></div><button class="add" onclick="addFinance('withdrawal','finWithdraw','finWithdrawNote')">Add Withdrawal</button></div></div></section><section class="section"><div class="sectionhead"><h2>🧾 Customer Fee Receipt</h2><span class="sub">Generate a professional receipt for every customer payment</span></div><div class="grid2"><div class="report"><div class="field"><label>Customer Name</label><input id="receiptCustomer" placeholder="Customer / Company name"></div><div class="field"><label>Contact Number</label><input id="receiptPhone" placeholder="Phone number"></div><div class="field"><label>Email</label><input id="receiptEmail" type="email" placeholder="Email address"></div><div class="field"><label>Project / Service</label><input id="receiptProject" placeholder="Project or service"></div></div><div class="report"><div class="field"><label>Total Fee (₹)</label><input id="receiptTotal" type="number" oninput="updateReceiptCalc()"></div><div class="field"><label>Previous Paid (₹)</label><input id="receiptPrevious" type="number" oninput="updateReceiptCalc()"></div><div class="field"><label>Amount Paid Now (₹)</label><input id="receiptPaid" type="number" oninput="updateReceiptCalc()"></div><div class="field"><label>Payment Method</label><select id="receiptMethod"><option>Cash</option><option>UPI</option><option>Bank Transfer</option><option>Card</option><option>Other</option></select></div><div class="notice" id="receiptBalance">Remaining Balance: ₹0</div></div></div><div class="toolbar"><button class="add" onclick="generateCustomerReceipt()">🧾 Generate & Print Receipt</button><button class="sharebtn" onclick="previewCustomerReceipt()">👁️ Preview</button></div></section><section class="section"><div class="sectionhead"><h2>Transaction History</h2></div>${(store.transactions||[]).slice().reverse().map(t=>`<div class="txrow"><b>${esc(t.kind.replace('_',' ').toUpperCase())}</b> · ${esc(t.note||'')} · ${esc(t.date)} <span class="money" style="float:right">${money(t.amount)}</span></div>`).join('')||'<div class="notice">No account transactions yet.</div>'}</section></section>`;rightPanel()}
 function updateReceiptCalc(){const total=Number(document.getElementById('receiptTotal')?.value||0),prev=Number(document.getElementById('receiptPrevious')?.value||0),paid=Number(document.getElementById('receiptPaid')?.value||0);const el=document.getElementById('receiptBalance');if(el)el.textContent='Remaining Balance: '+money(Math.max(0,total-prev-paid))}
 function customerReceiptHTML(){const customer=document.getElementById('receiptCustomer')?.value.trim()||'Customer';const phone=document.getElementById('receiptPhone')?.value.trim()||'';const email=document.getElementById('receiptEmail')?.value.trim()||'';const project=document.getElementById('receiptProject')?.value.trim()||'Service / Project';const total=Number(document.getElementById('receiptTotal')?.value||0),prev=Number(document.getElementById('receiptPrevious')?.value||0),paid=Number(document.getElementById('receiptPaid')?.value||0);const method=document.getElementById('receiptMethod')?.value||'Other';const balance=Math.max(0,total-prev-paid);const receiptNo='3FS-'+new Date().toISOString().replace(/\D/g,'').slice(0,14);const date=new Date().toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'});return `<!doctype html><html><head><meta charset="utf-8"><title>3FS Fee Receipt</title><style>body{font-family:Arial,sans-serif;background:#f4f6fa;margin:0;padding:24px;color:#182235}.receipt{max-width:720px;margin:auto;background:#fff;border:1px solid #dce3ef;border-radius:16px;padding:32px;box-shadow:0 10px 30px #0001}.head{display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #182235;padding-bottom:18px}.logo{width:70px;height:70px;object-fit:contain}.brand{font-size:28px;font-weight:800}.muted{color:#667085}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0}.box{background:#f7f9fc;border-radius:10px;padding:12px}.amount{font-size:30px;font-weight:800}.total{margin-top:20px;border-top:1px solid #ddd;padding-top:18px}.row{display:flex;justify-content:space-between;padding:8px 0}.balance{font-size:20px;font-weight:800}.footer{margin-top:28px;border-top:1px solid #ddd;padding-top:14px;font-size:12px}@media print{body{background:#fff;padding:0}.receipt{box-shadow:none;border:0;border-radius:0;max-width:none}} </style></head><body><div class="receipt"><div class="head"><div><div class="brand">3FS</div><div class="muted">Customer Fee Receipt</div></div><img class="logo" src="${location.origin+location.pathname.replace(/[^/]*$/,'')}3fs-logo.jpg" onerror="this.style.display='none'"></div><div class="grid"><div class="box"><b>Receipt No.</b><br>${receiptNo}</div><div class="box"><b>Date</b><br>${date}</div><div class="box"><b>Customer</b><br>${esc(customer)}<br>${esc(phone)}<br>${esc(email)}</div><div class="box"><b>Project / Service</b><br>${esc(project)}<br>Payment: ${esc(method)}</div></div><div class="total"><div class="row"><span>Total Fee</span><b>${money(total)}</b></div><div class="row"><span>Previous Paid</span><b>${money(prev)}</b></div><div class="row"><span>Amount Paid Now</span><b>${money(paid)}</b></div><div class="row balance"><span>Remaining Balance</span><b>${money(balance)}</b></div></div><div class="footer">Thank you for choosing 3FS. This receipt confirms the payment recorded for the above project/service.</div></div>
-<section id="user-management" class="card" style="margin-top:20px;">
-  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-    <div>
-      <h2 style="margin:0;">👥 User Management</h2>
-      <p style="margin:6px 0 0;opacity:.75;">Add, edit, activate or deactivate team users and roles.</p>
-    </div>
-    <button type="button" onclick="openUserForm()">+ Add User</button>
-  </div>
-  <div id="user-management-list" style="margin-top:14px;"></div>
-  <div id="user-management-form" hidden style="margin-top:14px;">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">
-      <input id="um-name" placeholder="Name">
-      <input id="um-email" type="email" placeholder="Email">
-      <input id="um-phone" placeholder="Contact number">
-      <input id="um-username" placeholder="Username">
-      <input id="um-password" type="password" placeholder="Password">
-      <select id="um-role"><option>Admin</option><option>Manager</option><option>Team Member</option></select>
-    </div>
-    <div style="margin-top:10px;display:flex;gap:8px;">
-      <button type="button" onclick="saveUser()">Save User</button>
-      <button type="button" onclick="closeUserForm()">Cancel</button>
-    </div>
-  </div>
-</section>
-<script>
-(function(){
-  const KEY='3fs_users';
-  let editing=null;
-  function users(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}}
-  function saveAll(v){localStorage.setItem(KEY,JSON.stringify(v)); render()}
-  window.openUserForm=function(i){
-    editing=(typeof i==='number')?i:null;
-    const u=editing!==null?users()[editing]:{};
-    ['name','email','phone','username','password','role'].forEach(k=>{
-      const el=document.getElementById('um-'+k); if(el) el.value=u[k]|| (k==='role'?'Team Member':'');
-    });
-    document.getElementById('user-management-form').hidden=false;
-  };
-  window.closeUserForm=function(){document.getElementById('user-management-form').hidden=true;editing=null};
-  window.saveUser=function(){
-    const u={};
-    ['name','email','phone','username','password','role'].forEach(k=>u[k]=document.getElementById('um-'+k).value.trim());
-    u.active=true;
-    if(!u.name||!u.username){alert('Name and username are required.');return}
-    const a=users();
-    if(editing===null)a.push(u); else {u.active=(a[editing].active!==false);a[editing]=u}
-    saveAll(a); closeUserForm();
-  };
-  window.toggleUser=function(i){const a=users();a[i].active=a[i].active===false;saveAll(a)};
-  window.deleteUser=function(i){if(confirm('Delete this user?')){const a=users();a.splice(i,1);saveAll(a)}};
-  function render(){
-    const el=document.getElementById('user-management-list'); if(!el)return;
-    const a=users();
-    if(!a.length){el.innerHTML='<div style="opacity:.7;padding:12px 0;">No users added yet.</div>';return}
-    el.innerHTML=a.map((u,i)=>'<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border:1px solid #ddd;border-radius:10px;margin:8px 0;flex-wrap:wrap;">'
-      +'<div><strong>'+esc(u.name)+'</strong><div style="font-size:.9em;opacity:.75;">'+esc(u.username)+' · '+esc(u.role||'Team Member')+' · '+(u.active!==false?'Active':'Inactive')+'</div></div>'
-      +'<div style="display:flex;gap:6px;"><button type="button" onclick="openUserForm('+i+')">Edit</button><button type="button" onclick="toggleUser('+i+')">'+(u.active!==false?'Deactivate':'Activate')+'</button><button type="button" onclick="deleteUser('+i+')">Delete</button></div></div>').join('');
-  }
-  function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-  document.addEventListener('DOMContentLoaded',render);
-})();
-</script>
-
 </body></html>`}
 function previewCustomerReceipt(){const html=customerReceiptHTML(),w=window.open('','_blank','width=820,height=900');if(!w)return alert('Please allow pop-ups to preview the receipt.');w.document.write(html);w.document.close()}
 function generateCustomerReceipt(){const paid=Number(document.getElementById('receiptPaid')?.value||0);if(!document.getElementById('receiptCustomer')?.value.trim())return alert('Enter customer name.');if(!paid)return alert('Enter amount paid.');const html=customerReceiptHTML();store.transactions=store.transactions||[];store.transactions.push({id:Date.now(),kind:'income',amount:paid,note:'Customer receipt — '+document.getElementById('receiptCustomer').value.trim(),date:new Date().toISOString().slice(0,10),receipt:true});persist();const w=window.open('','_blank','width=820,height=900');if(!w)return alert('Please allow pop-ups to print the receipt.');w.document.write(html);w.document.close();w.onload=()=>w.print();}
