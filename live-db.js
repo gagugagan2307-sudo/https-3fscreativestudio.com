@@ -60,6 +60,10 @@
       status('error','Live database unavailable — local mode');
     }
   };
+  window._3fsRefreshLive=async function(){
+    if(!client) return false;
+    try{const r=await client.from('threefs_state').select('data,updated_at').eq('id',1).maybeSingle(); if(r.data&&r.data.data){localStorage.setItem('3fsData',JSON.stringify(r.data.data)); window.dispatchEvent(new Event('3fs:live-refresh')); return true;} }catch(e){console.warn('Live refresh failed',e);} return false;
+  };
   window.addEventListener('3fs:datachanged',()=>{
     if(window._3fsPushLive && window.store) window._3fsPushLive(window.store);
   });
