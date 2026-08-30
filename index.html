@@ -69,6 +69,52 @@ body.theme-pink{--accent:#ff4fa3;--accent2:#ff9bc9}
   .top{width:100%!important;max-width:100%!important;}
   .brand{min-width:0!important;}
 }
+/* 3FS final responsive layout patch */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+.layout{grid-template-columns:235px minmax(0,1fr) 390px;width:100%;max-width:1920px;margin:0 auto}
+.main,.right{min-width:0}
+.main{overflow:hidden}
+.table{width:100%;max-width:100%}
+.cards{min-width:0}
+.graphgrid{min-width:0}
+/* Keep large desktop spacious without stretching individual controls excessively */
+@media (min-width:1440px){
+  .layout{grid-template-columns:245px minmax(0,1fr) 410px}
+  .main{padding:30px 34px}
+  .right{padding:28px 20px}
+  .cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+  .card{min-width:0}
+  .section,.title,.search{max-width:100%}
+  .team-report-section .team-report-card{min-width:0}
+}
+/* Partners / record tables stay inside the available desktop column */
+@media (min-width:901px){
+  .table .thead,.table .row{width:100%;min-width:780px}
+  .table{overflow-x:auto}
+}
+/* Tablet/smaller desktop */
+@media (min-width:901px) and (max-width:1100px){
+  .layout{grid-template-columns:190px minmax(0,1fr)}
+  .right{display:none!important}
+  .main{padding:20px 18px}
+}
+/* Mobile: full-width stacked layout, no reserved desktop column */
+@media (max-width:900px){
+  .layout{display:block!important;width:100%!important;max-width:100%!important;margin:0!important}
+  aside{width:100%!important;max-width:100%!important}
+  .main{width:100%!important;max-width:100%!important;min-width:0!important;overflow:hidden!important;padding:14px 10px!important}
+  .right{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;border-left:0!important;border-top:1px solid var(--line)!important;padding:14px 10px!important;box-sizing:border-box!important}
+  #content{width:100%!important;max-width:100%!important;min-width:0!important}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .table{width:100%!important;max-width:100%!important;overflow-x:auto!important}
+  .section,.report,.calendar,.graphgrid,.grid2,.team-report-section{width:100%!important;max-width:100%!important;min-width:0!important}
+}
+@media (max-width:600px){
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .overview{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+
 </style>
 <style id="threefs-bg-picker-css">
 #threefs-bg-picker{position:fixed;right:16px;bottom:16px;z-index:9999;width:250px;padding:14px;border:1px solid rgba(255,204,64,.35);border-radius:16px;background:rgba(7,14,27,.94);backdrop-filter:blur(14px);box-shadow:0 16px 45px rgba(0,0,0,.4);color:#fff;font-family:Arial,sans-serif}
