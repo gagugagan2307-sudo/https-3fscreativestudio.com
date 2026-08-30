@@ -19,3 +19,7 @@ Retained features:
 - Mobile and laptop responsive layout
 
 Nothing was intentionally removed from the supplied version.
+
+
+## Audit Trail
+Dedicated audit trail with actor, timestamp, action/details, print and CSV export for team review.
