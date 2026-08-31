@@ -1,0 +1,7 @@
+3FS FINAL CLEAN VERSION
+
+Use this folder as the complete website. Do NOT mix files from older 3FS ZIPs.
+
+Supabase note: Anonymous Sign-Ins must be enabled in the Supabase project for shared realtime sync. The website will show Local mode until that is enabled.
+
+Mobile: one-column phone layout, no desktop right-column reservation. Desktop layout preserved.
