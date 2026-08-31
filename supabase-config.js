@@ -1,7 +1,6 @@
 // 3FS Supabase configuration
-// Replace these placeholders with your Supabase Project URL and publishable key.
-// Never put a Supabase secret/service-role key in this file.
+// Browser-safe publishable key only. Never use a service-role/secret key here.
 window.SUPABASE_CONFIG = {
-  url: 'YOUR_SUPABASE_PROJECT_URL',
-  publishableKey: 'YOUR_SUPABASE_PUBLISHABLE_KEY'
+  url: 'https://laffwurvntlqgkaaxtmr.supabase.co',
+  publishableKey: 'sb_publishable_Z-aXVaOxPpwIKVo5J_Hlmw__MjX8ARe'
 };

@@ -24,3 +24,7 @@ Do not put a Supabase secret/service-role key in browser files. The included SQL
 
 ### Authentication upgrade
 The old anonymous-login approach has been removed. The production version requires a real Supabase Auth account and an active profile. See `database.sql` for RLS and role setup.
+
+
+### Important for the shared 3FS login
+The website login is the 3FS app login. After a successful login, the site creates a Supabase Anonymous Auth session so the existing RLS policies can identify each device securely enough to sync the shared state. In Supabase Dashboard, enable **Authentication → Providers → Anonymous**. Do not put a service-role/secret key in the website.

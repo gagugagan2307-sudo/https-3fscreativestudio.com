@@ -177,6 +177,11 @@ aside,.right{backdrop-filter:blur(12px)}
   .modalbox{width:calc(100vw - 14px)!important;max-height:88vh!important;padding:13px!important}
   #threefs-bg-picker{right:7px!important;bottom:7px!important;width:190px!important;padding:10px!important}
 }
+
+/* 3FS final responsive correction: mobile compact, desktop preserved */
+@media (min-width:1101px){.layout{grid-template-columns:235px minmax(0,1fr) 390px}.right{display:block!important}.main{min-width:0}.cards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:761px) and (max-width:1100px){.layout{grid-template-columns:190px minmax(0,1fr)}.right{display:none!important}.main{min-width:0}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){html,body{width:100%;max-width:100%;overflow-x:hidden}.layout{display:block!important;width:100%!important;min-width:0!important}.main{width:100%!important;max-width:100%!important;min-width:0!important;padding:12px 10px!important;overflow:visible!important}.right{display:block!important;width:100%!important;min-width:0!important;padding:12px 10px!important;border-left:0!important;border-top:1px solid var(--line)}aside{width:100%!important;max-width:100%!important;box-sizing:border-box;overflow-x:auto!important;overflow-y:hidden!important}.cards{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}.card{min-width:0!important;padding:11px!important}.card .num{font-size:21px!important}.overview{grid-template-columns:repeat(2,minmax(0,1fr))!important}.graphgrid{grid-template-columns:1fr!important}.graphbox{min-width:0!important}.table{width:100%!important;max-width:100%!important;overflow-x:auto!important}.row,.thead{min-width:720px}.sectionhead{min-width:0}.actions{max-width:100%}.btn{font-size:11px!important;padding:7px 8px!important}.report{min-width:0!important}.snapshotgrid{max-width:100%;overflow-x:auto}.calendar{width:100%;max-width:100%}.day{min-height:64px!important}.right .report{width:100%;box-sizing:border-box}}
 </style>
 </head>
 <body>
@@ -223,6 +228,7 @@ function persist(){
 async function persistAndSync(){
   persist();
   try{nav();render();updatePermissionUI();updateNotifications();}catch(e){}
+  try{ if(window._3fsPushLive) await window._3fsPushLive(store); }catch(e){ console.warn('3FS shared save failed',e); }
   // IMPORTANT: after a local edit, PUSH the new state. Never pull here,
   // otherwise a stale server copy can overwrite a just-saved client edit.
   try{if(window._3fsPushLive) await window._3fsPushLive(store);}catch(e){console.warn('3FS live push:',e)}
